@@ -4,13 +4,14 @@ import argparse
 from datetime import datetime
 
 # OpenWeatherMap API credentials
-API_KEY = '1c65bc4200829863fbbf17989e4c4924'
+API_KEY = '1781563eb6f54c85f970c' # Dummy API key
 
 def get_weather(city):
     # API URL
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}'
 
     try:
+        # Make a request to the API
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()
@@ -19,6 +20,7 @@ def get_weather(city):
             local_time = datetime.utcfromtimestamp(utc_with_tz)
             return local_time.time()
 
+        # Convert Kelvin to Celsius
         def kelvin_to_celsius(kelvin):
             celsius = kelvin - 273.15
             return celsius
@@ -46,7 +48,7 @@ def get_weather(city):
         print(f'Conditions: {formatted_weather}')
         print(f'Temperature: {temp_in_celsius:.2f}°C')
         print(f'Humidity: {humidity}%')
-        print(f'Wind Speed: {wind_speed:.2f} km/hr')
+        print(f'Wind Speed: {wind_speed * 3.6:.2f} km/hr')
         print(f'Sunrise: {sunrise_time} hrs')
         print(f'Sunset: {sunset_time} hrs')
 
@@ -57,6 +59,7 @@ def get_weather(city):
             print(f'Error: Failed to retrieve weather data. HTTPError: {err}')
 
 
+#Define a function to format the weather conditions with emojis
 def format_weather_conditions(weather):
     # Map weather conditions to emojis
     emoji_mapping = {
@@ -137,8 +140,8 @@ if __name__ == '__main__':
 
     if len(city_data) > 0:
         city_names = [city['name'].lower() for city in city_data]
-        if args.city.lower() in city_names:
-            city_index = city_names.index(args.city.lower())
+        if any(args.city.lower() in city_name for city_name in city_names):
+            city_index = next(index for index, city_name in enumerate(city_names) if args.city.lower() in city_name)
             city = city_data[city_index]
             latitude = city["lat"]
             longitude = city["lon"]
