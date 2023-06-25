@@ -51,4 +51,7 @@ To use the Weather Forecasting Tool, follow these steps:
 ```
 
 6. The tool will fetch the weather data from the [OpenWeatherMap API](https://openweathermap.org/api) and displays the current forecast for the specified city.
+
+# Examples
+❮img src="Commandlineexamples/example1.png"❯
    
