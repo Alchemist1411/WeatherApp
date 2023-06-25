@@ -1,4 +1,4 @@
-# Weather Forecasting Tool
+# Weather Forecasting Tool 🌞
 The Weather Forecast CLI Tool is a command-line utility that enables users to fetch and display the current weather forecast for a specific city. By leveraging the OpenWeatherMap API, this tool provides accurate and up-to-date weather data for effective planning of outdoor activities, travel arrangements, and day-to-day decision making.
 Implemented in Python, the WeatherForecast CLI Tool offers a streamlined interface for easy usage. Users can simply enter the desired city name, and the tool will retrieve and present comprehensive weather information.
 
