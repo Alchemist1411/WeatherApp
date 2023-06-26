@@ -4,7 +4,7 @@ import argparse
 from datetime import datetime
 
 # OpenWeatherMap API credentials
-API_KEY = '1c65bc4200829863fbbf17989e4c4924' # Dummy API key
+API_KEY = '1c65bc4200829863' # Dummy API key
 
 def get_weather(city):
     # API URL
